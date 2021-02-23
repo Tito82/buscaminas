@@ -13,16 +13,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-import javax.swing.border.LineBorder;
-
-
 
 public class Ventana extends JFrame {
 	private Tablero tableroFacil;
 	
-	
 	public Ventana(){
-		super();
+		
 		JFrame ventana = new JFrame();
 		this.setVisible(true);
 		this.setSize(500,500);
@@ -64,16 +60,8 @@ public class Ventana extends JFrame {
 //		
 //		this.getContentPane().add(primerPanel);
 		crearSegundoPanel();
-		crearTablero(10,10,10);
 	}
 	
-	private void crearTablero(int filas, int columnas, int minas) {
-		this.tableroFacil = new Tablero(this, filas, columnas, minas);
-		tableroFacil.setBorder(new LineBorder(Color.BLACK, 5));
-		add(tableroFacil, BorderLayout.CENTER);
-		
-	}
-
 	public void crearMenu() {
 		JMenu partidaMenu = new JMenu("Partida");
 		partidaMenu.setMnemonic(KeyEvent.VK_P);
