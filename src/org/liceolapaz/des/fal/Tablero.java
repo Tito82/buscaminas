@@ -1,30 +1,59 @@
 package org.liceolapaz.des.fal;
 
+
+import java.awt.GridLayout;
 import java.util.Random;
 
-import javax.swing.JButton;
+
 import javax.swing.JPanel;
 
+
+
 public class Tablero extends JPanel {
-	private Ventana ventana;
 	private int filas;
 	private int columnas;
-	private int minas;
-	JButton[][] tablero;
+	Boton[][] botones;
+
 	
-	public Tablero(Ventana ventana, int filas, int columnas, int minas) {
-		super();
-		this.ventana = ventana;
-		this.filas = filas;
-		this.columnas = columnas;
+	public Tablero(int filas, int columnas){
+		this.filas=filas;
+		this.columnas=columnas;
+		this.setSize(400, 400);
+		this.setVisible(true);
+		this.setLayout (new GridLayout(filas,columnas));
+		
+		crearBotones();
+	    crearMinas(10);
+	
+	}
+	private void crearBotones() {
+		Boton boton;
+		 botones = new Boton[filas][columnas];
+		
+		 for(int fila = 0; fila < filas; fila++) {
+			for(int columna = 0; columna < columnas; columna++) {
+				
+				boton = new Boton(this, fila, columna); 
+				botones[fila][columna] = boton;
+				add(botones[fila][columna]);
+			}		 	 
+		 }
+	}
+	
+	private void crearMinas(int minas) {
+		Random random = new Random();
+		int contador = 0;
+		 
+		while(contador<=minas) {
+			
+			int fila = random.nextInt((filas - 1) + 0);
+			int columna = random.nextInt((columnas - 1) + 0);
+			botones[fila][columna].setEsMina(true);
+			contador= contador +1; //esto es para hacer luego el contador
+		}
 		
 	}
 	
-	private int generarMina(int minas) {// meter esto en un boton de forma aleatoria
-		Random rand = new Random();
-		return rand.nextInt(minas) + 1;
-	}
-
 }
  
  
