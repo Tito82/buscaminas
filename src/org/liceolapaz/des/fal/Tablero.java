@@ -4,56 +4,44 @@ package org.liceolapaz.des.fal;
 import java.awt.GridLayout;
 import java.util.Random;
 
-
 import javax.swing.JPanel;
 
-
-
 public class Tablero extends JPanel {
-	private int filas;
-	private int columnas;
-	Boton[][] botones;
-
 	
-	public Tablero(int filas, int columnas){
-		this.filas=filas;
-		this.columnas=columnas;
-		this.setSize(400, 400);
-		this.setVisible(true);
-		this.setLayout (new GridLayout(filas,columnas));
 		
-		crearBotones();
-	    crearMinas(10);
 	
-	}
-	private void crearBotones() {
-		Boton boton;
-		 botones = new Boton[filas][columnas];
-		
-		 for(int fila = 0; fila < filas; fila++) {
-			for(int columna = 0; columna < columnas; columna++) {
-				
-				boton = new Boton(this, fila, columna); 
-				botones[fila][columna] = boton;
-				add(botones[fila][columna]);
-			}		 	 
-		 }
+		 int filas; 
+		 int columnas;
+		 Boton[][] botones; 
+		 
+	public Tablero(int filas, int columnas) {   // aqui paso filas y columnas pq habra varias  filas y columnas ya que es un tablero
+		this.filas = filas;
+		this.columnas = columnas;
+		this.setLayout (new GridLayout (filas, columnas)); //GridLayout hace una division de cuadriculas en el tablero.
+	
+	
+		//crearBotones();
+		crearMinas(10);
 	}
 	
 	private void crearMinas(int minas) {
 		Random random = new Random();
 		int contador = 0;
 		 
-		while(contador<=minas) {
+		while(contador<minas) {
 			
 			int fila = random.nextInt((filas - 1) + 0);
 			int columna = random.nextInt((columnas - 1) + 0);
-			botones[fila][columna].setEsMina(true);
-			contador= contador +1; //esto es para hacer luego el contador
+			botones[fila][columna].setEstado(Estado.BOMBA);
+			contador = contador +1;
 		}
-		
 	}
-	
 }
- 
- 
+//	public void crearNumeros() {
+//		int contador = 0;
+//		
+//		for(int fila = 0; fila < filas; fila++) {
+//			for(int columna = 0; columna < columnas; columna++) {
+//				botones[fila][columna]  = 0-0;
+//				
+//				if(fila > 0  && columna > 0) { //  1-1

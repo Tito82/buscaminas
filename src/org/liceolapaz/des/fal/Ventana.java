@@ -39,6 +39,7 @@ public class Ventana extends JFrame {
 		
 		crearPrimerPanel();
 		crearSegundoPanel();
+		crearMenu();
 	}
 
 	private void crearPrimerPanel() {
@@ -61,16 +62,15 @@ public class Ventana extends JFrame {
 		boton.setBorderPainted(false);
 		boton.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/principal.png")).getImage()
 				.getScaledInstance(boton.getWidth(), boton.getHeight(), Image.SCALE_DEFAULT)));
+		
 		boton.addActionListener(new ActionListener() {
+			
 				@Override
 		public void actionPerformed(ActionEvent arg0) {
 				primerPanel.setVisible(false);
 				segundoPanel.setVisible(true);
 		}
-		
 		});
-		
-	
 		JLabel texto2 = new JLabel();
 		primerPanel.add(texto2);
 		texto2.setText("Pulse en la imagen para empezar a jugar");
@@ -93,7 +93,7 @@ public class Ventana extends JFrame {
 		nuevaPartida.setIcon(new ImageIcon("/nuevaPartida.png"));
 		nuevaPartida.setMnemonic(KeyEvent.VK_N);
 		nuevaPartida.setAccelerator(KeyStroke.getKeyStroke("ctrl N"));
-		
+			
 		JMenuItem guardarPartida = new JMenuItem("Guardar Partida");
 		guardarPartida.setMnemonic(KeyEvent.VK_G);
 		guardarPartida.setAccelerator(KeyStroke.getKeyStroke("ctrl G"));
@@ -130,14 +130,10 @@ public class Ventana extends JFrame {
 	}
 	
 	public void crearSegundoPanel() {
-		this.getContentPane().add(segundoPanel);
-		segundoPanel.setBounds(0, 0, 500, 500);
-		segundoPanel.setVisible(false);
-		segundoPanel.setLayout(new BorderLayout());
-		setLayout(new BorderLayout());
 		setResizable(true);
-		
-        crearMenu();
+		setLayout(new BorderLayout());
+		this.getContentPane().add(segundoPanel, BorderLayout.CENTER);
+		segundoPanel.setLayout(new BorderLayout());
 		tableroFacil = new Tablero(10, 10);
 		segundoPanel.add(tableroFacil, BorderLayout.CENTER);
 		tableroFacil.setVisible(true);
