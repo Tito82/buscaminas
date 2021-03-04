@@ -134,7 +134,7 @@ public class Ventana extends JFrame {
 		setLayout(new BorderLayout());
 		this.getContentPane().add(segundoPanel, BorderLayout.CENTER);
 		segundoPanel.setLayout(new BorderLayout());
-		tableroFacil = new Tablero(10, 10);
+		tableroFacil = new Tablero(8,8);
 		segundoPanel.add(tableroFacil, BorderLayout.CENTER);
 		tableroFacil.setVisible(true);
 		

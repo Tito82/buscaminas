@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.text.AttributeSet.ColorAttribute;
 
 public class Boton extends JButton {
 	
@@ -25,10 +26,10 @@ public class Boton extends JButton {
 		
 		this.setVisible(true);
 		this.setOpaque(true);
-		this.setBackground(Color.LIGHT_GRAY);
+		//this.setBackground(Color.LIGHT_GRAY);
 //		this.setSize(80, 60);
 		this.addActionListener(new ActionListener() {
-			
+		
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				comprobarMinas();
@@ -45,16 +46,18 @@ public class Boton extends JButton {
 			switch (this.estado) {
 			case VACIO:
 				//COMPROBAR BOMBAS CONTIGUAS Y ESPACIO ABIERTO
-				//CAMBIAR COLOR CASILLA
+				
 				this.setEnabled(false); //DESHABILITAS
+				this.setBackground(Color.WHITE);
 				break;
 			case BOMBA:
 				setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/boom.png")).getImage().getScaledInstance(50, 50, 0))); //CAMBIAR ICONO
-				this.setEnabled(false); //DESAHABILAR BOTON
+				//this.setEnabled(false); //DESAHABILAR BOTON
 				//TERMINAR JUEGO-- > PERDISTE
 				break;
 			case NUMERO:
 				   //MOSTRAR NUMERO Y COLOR
+				this.setBackground(Color.WHITE);
 				this.setEnabled(false);
 
 				break;
